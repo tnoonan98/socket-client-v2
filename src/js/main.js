@@ -1,8 +1,3 @@
-// Import our custom JS
-//import './modules/easterEgg.js'
-import { addTwoNumbers, displayEasterEggOnWednesday} from './modules/easterEgg';
-//import { addTwoNumbers } from './modules/easterEgg';
-//import * as egg from './modules/easterEgg'
 import { io } from 'socket.io-client'
 
 // Import our custom CSS
@@ -12,16 +7,13 @@ import 'bootstrap-icons/font/bootstrap-icons.css'
 // Import only the Bootstrap components we need
 import { Popover } from 'bootstrap';
 
-const socket = io("ws://172.17.103.101:3000")
+const socket = io("ws://172.17.103.51:3000")
 
 // Create an example popover
 document.querySelectorAll('[data-bs-toggle="popover"]')
   .forEach(popover => {
     new Popover(popover)
   })
-
-  //alert(addTwoNumbers(5, 3))
-  displayEasterEggOnWednesday()
 
   socket.on("connectComplete", (msg) => {
     console.log(`You recieved ${msg}.`)
