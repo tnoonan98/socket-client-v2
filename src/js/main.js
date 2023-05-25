@@ -15,37 +15,52 @@ document.querySelectorAll('[data-bs-toggle="popover"]')
     new Popover(popover)
   })
 
-  socket.on("connectComplete", (msg) => {
-    console.log(`You recieved ${msg}.`)
+socket.on("connectComplete", (msg) => {
+  console.log(`You recieved ${msg}.`)
 
-    const auth = JSON.parse(msg)
-    document.querySelector("#connectAuth").innerHTML = 'You are connected.'
-    document.querySelector("#counterDisplay").innerHTML = 'Counter: ' + auth.totalClicks
+  const auth = JSON.parse(msg)
+  document.querySelector("#connectAuth").innerHTML = 'You are connected.'
+  document.querySelector("#counterDisplay").innerHTML = 'Counter: ' + auth.totalClicks
 
-  })
-  socket.on("someoneResetClicks", (msg) => {
-    console.log(`You recieved ${msg}.`)
-    const count = JSON.parse(msg)
+})
+socket.on("someoneResetClicks", (msg) => {
+  console.log(`You recieved ${msg}.`)
+  const count = JSON.parse(msg)
 
-    document.querySelector("#counterDisplay").innerHTML = 'Counter: ' + count.totalClicks
-  })
+  document.querySelector("#counterDisplay").innerHTML = 'Counter: ' + count.totalClicks
+})
 
-  socket.on("someoneClicked", (msg) => {
-    console.log(`You recieved ${msg}.`)
+socket.on("someoneClicked", (msg) => {
+  console.log(`You recieved ${msg}.`)
 
-    const count = JSON.parse(msg)
+  const count = JSON.parse(msg)
 
-    document.querySelector("#counterDisplay").innerHTML = 'Counter: ' + count.totalClicks
-    document.querySelector("#whoClicked").innerHTML = count.whoClicked + ' clicked!!!'
+  document.querySelector("#counterDisplay").innerHTML = 'Counter: ' + count.totalClicks
+  document.querySelector("#whoClicked").innerHTML = count.whoClicked + ' clicked!!!'
 
-  })
+})
 
+function sendCustomName() {
+  const name = document.getElementById("chosenName").value
+  
+  const payload = {
+    customName: name
+  }
 
-  document.querySelector('#btn1').addEventListener("click", () => {
+  const payloadAsString = JSON.stringify(payload)
+
+  console.log("nameUpdate", payloadAsString)
+  socket.emit("nameUpdate", payloadAsString)
+}
+
+document.querySelector('#changeName').addEventListener("click", () => {
+  sendCustomName()
+})
+
+document.querySelector('#btn1').addEventListener("click", () => {
   socket.emit("click")
 })
 
 document.querySelector('#reset').addEventListener("click", () => {
   socket.emit("resetClicks")
 })
- 
