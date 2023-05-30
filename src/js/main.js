@@ -1,12 +1,12 @@
 import { io } from 'socket.io-client'
-//import { a } from './modules/a.js'
-//import { sendCustomName } from './modules/sendCustomName.js'
+import { sendCustomName } from './modules/sendCustomName.js'
 
 import '../scss/styles.scss'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 
 const socket = io("ws://172.17.40.2:3000")
 //const socket = io("ws://192.168.56.1:3000")
+export {socket}
 
 socket.on("connectComplete", (msg) => {
   console.log(`You recieved ${msg}.`)
@@ -34,7 +34,7 @@ socket.on("someoneClicked", (msg) => {
 
 })
 
-function sendCustomName() {
+/*function sendCustomName() {
   const name = document.getElementById("chosenName").value
   
   const payload = {
@@ -45,7 +45,7 @@ function sendCustomName() {
 
   console.log("nameUpdate", payloadAsString)
   socket.emit("nameUpdate", payloadAsString)
-}
+}*/
 
 document.querySelector('#changeName').addEventListener("click", () => {
   sendCustomName()
