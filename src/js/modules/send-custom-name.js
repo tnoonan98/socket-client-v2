@@ -1,4 +1,3 @@
-import { socket } from "../main.js"
 
 export function sendCustomName() {
     const name = document.getElementById("chosenName").value
@@ -10,5 +9,7 @@ export function sendCustomName() {
     const payloadAsString = JSON.stringify(payload)
   
     console.log("nameUpdate", payloadAsString)
-    socket.emit("nameUpdate", payloadAsString)
+    //socket.emit("nameUpdate", payloadAsString)
+    //document.querySelector('#changeName').disabled = true
+    return payloadAsString
   }
