@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,25 +9,29 @@
   <script type="module" src="./js/main.js"></script>
 </head>
 
-<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center text-center">
 
-  <div class="card ">
-    <h3 class="card-title ">Socket-Client<i class="bi bi-plug"></i> </h3>
-    <h6 id="connectAuth" class="card-subtitle mb-2 text-muted"></h6>
+
+<div class="card d-flex flex-column min-vh-100 justify-content-center align-items-center text-center border">
+  <span class="border border-secondary rounded-4 p-5">
     <div class="card-body">
-      <h3 id="counterDisplay" class="card-title"></h3>
-      <p id="whoClicked" class="card-text"></p>
-      <button id="btn1" class="btn btn-primary">Click to Play</button>
-      <button id="reset" class="btn btn-primary">Click to Reset</button>
+      <h3 class="card-header">Socket-Client<i class="bi bi-plug"></i> </h3>
+      <h6 id="connectAuth" class="card-subtitle mb-2 text-muted">Not Connected</h6>
+    </div>
+    <div class="card-body">
+      <h3 id="counterDisplay" class="card-text">Counter: 0</h3>
+      <p id="whoClicked" class="card-text">Whos Gunna Click???</p>
+      <a id="btn1" class="btn btn-primary">Click to Play</a>
+      <a id="reset" class="btn btn-primary">Click to Reset</a>
       <div class="input-group pt-3">
         <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
-        <input id="chosenName" type="text" class="form-control text-center" placeholder="Add custom name">
+        <input id="chosenName" type="text" class="form-control text-center" placeholder="Add Custom Name">
         <div class="input-group-append pt-1">
-          <button id="changeName" class="btn btn-secondary">Change name</button>
+          <a id="changeName" class="btn btn-secondary">Change name</a>
         </div>
       </div>
     </div>
-  </div>
+  </span>
 </div>
+
 
 </html>
