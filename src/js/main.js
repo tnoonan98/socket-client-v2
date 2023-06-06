@@ -7,7 +7,7 @@ import '../scss/styles.scss'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { connectComplete } from './modules/connect-complete.js'
 // IP Address of your socket server
-const socket = io("ws://172.17.103.51:3000")
+const socket = io(import.meta.env.VITE_URL)
 //
 socket.on("connectComplete", (msg) => {
   connectComplete(msg)
