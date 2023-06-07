@@ -2,6 +2,7 @@ const path = require('path')
 
 export default {
   root: path.resolve(__dirname, 'src'),
+  base: 'https://github.com/SCBattisti/socket-client-v2.git',
   build: {
     outDir: '../dist'
   },
